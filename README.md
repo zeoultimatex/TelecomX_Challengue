@@ -1,31 +1,25 @@
-# TelecomX LATAM – Análisis Exploratorio de Bajas
+# TelecomX Challengue – Análisis Evasion de Clientes
 
-> Análisis de fuga (churn) en clientes de telecomunicaciones de Latinoamérica utilizando **Python**, **Pandas** y **LightGBM**. Este repositorio incluye un _notebook_ de Jupyter con todo el flujo de trabajo de EDA, así como un **dashboard interactivo en Streamlit** para la visualización ejecutiva de resultados.
-
----
+- Análisis de Evasion de clientes TelecomX utilizando **Python**, **Pandas** y **LightGBM**. El repositorio incluye un _notebook_ de Jupyter con todo el flujo de trabajo de EDA, así como un **dashboard interactivo en Streamlit** para la visualización de datos.
 
 ## 📂 Contenido del repositorio
 
 | Ruta/archivo | Descripción |
 |--------------|-------------|
-| `TelecomX_LATAM.ipynb` | Notebook principal con preparación de datos, análisis exploratorio, segmentación y entrenamiento del modelo predictivo. |
+| `TelecomX_Challengue.ipynb` | Notebook principal con preparación de datos, análisis exploratorio, segmentación y entrenamiento del modelo predictivo. |
 | `Informe.md` | Informe con los hallazgos significativos y soluciones para el cliente. |
 | `app_churn.py` | Aplicación Streamlit que consume el dataset procesado y el modelo LightGBM para explorar métricas y descargar clientes en riesgo. |
-| `TelecomX_Data.json` | Dataset original en formato JSON (estructuras anidadas). |
-| `requirements.txt` | Dependencias mínimas de Python. |
+| `TelecomX_Data.json` | Base de datos en formato JSON. |
 
----
 
 ## 1. Descripción del problema
+Las compañías de telecomunicaciones afrontan pérdidas significativas. El objetivo de este proyecto es entender las **razones que generan estas evasiones** y construir un modelo que anticipe clientes con alta probabilidad de abandonar el servicio.
 
-Las compañías de telecomunicaciones afrontan pérdidas significativas debido a la **fuga de clientes (churn)**. El objetivo de este proyecto es entender los **factores que impulsan las bajas** y construir un modelo que anticipe clientes con alta probabilidad de abandonar el servicio.
-
----
 
 ## 2. Flujo de trabajo
 
 1. **Ingesta & Normalización**  
-   * Se lee el JSON con **Pandas**, se *explodean* listas y se **normalizan diccionarios anidados** con `pd.json_normalize`, generando un _flat table_ listo para análisis.
+   * Se lee el JSON con **Pandas**, se analizan listas y se **normalizan datos** con `pd.json_normalize`, generando un _flat table_ listo para análisis.
 2. **Limpieza & Enriquecimiento**  
    * Conversión de valores vacíos a `NaN` y tipado correcto (`float`, `category`, etc.).  
    * Renombrado de columnas a español y mapeo de la variable `Churn` a binaria (1 = Baja, 0 = Activo).
@@ -50,8 +44,8 @@ Las compañías de telecomunicaciones afrontan pérdidas significativas debido a
 
 ```bash
 # 1. Clonar el repo
-$ git clone https://github.com/JUANJO2410/CHALLENGE2.git
-$ cd CHALLENGE2
+$ git clone https://github.com/zeoultimatex/TelecomX_Challengue.git
+$ cd TelecomX_Challengue
 
 # 2. Crear entorno (opcional)
 $ python -m venv .venv && source .venv/bin/activate
@@ -60,14 +54,10 @@ $ python -m venv .venv && source .venv/bin/activate
 $ pip install -r requirements.txt
 
 # 4. Abrir el notebook
-$ jupyter lab TelecomX_LATAM.ipynb
+$ jupyter lab TelecomX_Challengue.ipynb
 
 # 5. Lanzar el dashboard
 $ streamlit run app_churn.py --server.port 8501
-
-
-
-```
 
 
 ## 4. Estructura del notebook
@@ -81,14 +71,3 @@ $ streamlit run app_churn.py --server.port 8501
 | **5. Segmentación crítica** | 41-46  | Identificación y cuantificación del segmento de mayor riesgo.                         |
 | **6. Modelado**             | 47-60  | Split train/test, entrenamiento LightGBM y evaluación ROC-AUC & matriz confusión.      |
 | **7. Exportes**             | 61-65  | Guardado de predicciones y dataset enriquecido.                                       |
-
----
-
-## 5. Créditos
-
-Proyecto desarrollado por **Juan José Ramos** (BIM & Data Science).  
-juan.ramos.s@usach.cl
-
----
-
-
